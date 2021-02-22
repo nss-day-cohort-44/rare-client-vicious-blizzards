@@ -11,7 +11,7 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault()
 
-    return fetch("http://127.0.0.1:8088/login", {
+    return fetch("http://127.0.0.1:8000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export const Login = () => {
       </dialog>
       <section>
         <form className="form--login" onSubmit={handleLogin}>
-          <h1>Level Up</h1>
+          <h1>Rare</h1>
           <h2>Please sign in</h2>
           <fieldset>
             <label htmlFor="inputEmail"> Email address </label>

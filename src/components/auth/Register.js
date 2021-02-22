@@ -19,8 +19,8 @@ export const Register = (props) => {
 
     if (password.current.value === verifyPassword.current.value) {
       const newUser = {
-        "first_name": firstName.current.value,
-        "last_name": lastName.current.value,
+        "firstName": firstName.current.value,
+        "lastName": lastName.current.value,
         "email": email.current.value,
         "password": password.current.value,
         "bio": "",
@@ -31,7 +31,7 @@ export const Register = (props) => {
         "account_type_id": 2,
       }
 
-      return fetch("http://127.0.0.1:8088/register", {
+      return fetch("http://127.0.0.1:8000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
