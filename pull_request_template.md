@@ -22,8 +22,11 @@ _My PR references these tickets (epic and task tickets)_
 ## Checklist for Reviewer
 - [ ] check it out
 - [ ] test all edge cases listed and more if you think of them (postman or browser)
+- [ ] check code against related issue ticket
 - [ ] request changes/approve
 - [ ] review code to make sure it fits coding style of project 
+- [ ] code has been commented? 
+
 <!--
 1. alphabetical imports 
 2. list, retrieve, create, update, destroy
