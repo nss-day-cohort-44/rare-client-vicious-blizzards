@@ -84,7 +84,7 @@ export const PostForm = (props) => {
             onChange={changePostState}
           >
             {categories.map((category) => (
-              <option key={category.id} value={category.label}>
+              <option key={category.id} value={category.id}>
                 {category.label}
               </option>
             ))}
@@ -133,7 +133,7 @@ export const PostForm = (props) => {
               title: currentPost.title,
               postImage: currentPost.postImage,
               content: currentPost.content,
-              category: currentPost.category,
+              category: parseInt(currentPost.category),
             }).then(() => history.push("/posts"))
           }}
           className="btn btn-primary"
