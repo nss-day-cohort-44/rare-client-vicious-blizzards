@@ -16,7 +16,7 @@ export const Tag = ({ tag, props }) => {
 
     if (localStorage.getItem("rare_user_id")) {
         return (
-            <div>
+            <div className="tags">
                 {tag.label}
 
                <button onClick={() => { confirmDelete() }}>Delete</button>  

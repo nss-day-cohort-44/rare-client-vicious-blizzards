@@ -10,8 +10,6 @@ export const TagForm = (props) => {
   
     // Component state
     const [tag, setTag] = useState({})
-    console.log("proooooops", props)
-  
     // Is there a a URL parameter??
     const editMode = props.location.hasOwnProperty("tagId")
 
@@ -21,20 +19,11 @@ export const TagForm = (props) => {
           When changing a state object or array, always create a new one
           and change state instead of modifying current one
       */
-      console.log("********handleControlledInputChange Executes***********")
-      console.log(event.target)
-      console.log("current state variable tag", tag)
-  
-      const newTag = Object.assign({}, tag)
-      console.log("new object that's a copy of tag state variable", newTag)
-  
-      newTag[event.target.name] = event.target.value
-      console.log("newTag after modification", newTag)
-  
-      setTag(newTag)
-      console.log("incoming tag 2", tag)
 
-    }
+      const newTag = Object.assign({}, tag)
+      newTag[event.target.name] = event.target.value
+      setTag(newTag)
+      }
   
     const getTagInEditMode = () => {
       if (editMode) {
@@ -52,8 +41,7 @@ export const TagForm = (props) => {
     // Once provider state is updated, determine the tag (if edit)
     useEffect(() => {
         getTagInEditMode()
-        
-    }, [tags])
+      }, [tags])
   
   
     const constructNewTag = () => {
@@ -73,7 +61,7 @@ export const TagForm = (props) => {
         }
       }
 
-      console.log("incoming tag", tag)
+      // console.log("incoming tag", tag)
     
     return (
       <form className="tagForm">
@@ -94,7 +82,7 @@ export const TagForm = (props) => {
           onClick={evt => {
             evt.preventDefault()
             constructNewTag()
-            console.log('Did anything actually happen here?', tag)
+            // console.log('Did anything actually happen here?', tag)
           }}
           className="btn btn-primary">
           {editMode ? "Save New Tag" : "Submit Tag"}
