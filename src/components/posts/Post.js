@@ -18,7 +18,7 @@ export const Post = ({post, props}) =>{
                     state: { chosenPost: post }
                 }}>title: {post.title}</Link>
                 <div>publication_date: {<HumanDate date={Date(post.publication_date)} />}</div>
-                <div>image_url: {post.image_url}</div>
+                <div>image_url: {post.post_image_url}</div>
                 <div>content: {post.content}</div>
                 <div>category: {post.category.label}</div>
                 <Link to={{
