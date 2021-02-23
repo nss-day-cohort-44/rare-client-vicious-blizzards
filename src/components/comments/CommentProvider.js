@@ -11,48 +11,58 @@ export const CommentProvider = (props) => {
         return fetch("http://localhost:8088/comments", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
             },
             body: JSON.stringify(comments)
         })
-        .then(getComments)
-    }
+        .then(getComments)}
 
     const getComments = () => {
-        return fetch('http://localhost:8088/comments')
+        return fetch('http://localhost:8088/comments', {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+             }
         .then(res => res.json())
         .then(setComments)
-    }
+    })}   
 
     const getSingleComment = (id) => {
-        return fetch(`http://localhost:8088/comments/${id}`)
+        return fetch(`http://localhost:8088/comments/${id}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+            }
             .then(res => res.json())
             .then(setComment)
-    }
-
+    })}
     const getCommentsByPostId = (post_id) => {
-        return fetch(`http://localhost:8088/comments?post_id=${post_id}`)
+        return fetch(`http://localhost:8088/comments?post_id=${post_id}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+            }
             .then(res => res.json())
             .then(setRelatedComments)
-    }
+    })}
 
     const updateComment = (comment) => {
         return fetch(`http://localhost:8088/comments/${comment.id}`, {
             method: "PUT",
             headers:{
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
             },
             body: JSON.stringify(comment)
         })
-        .then(getComments)
-    }
+        .then(getComments)}
 
     const deleteComment = (id) => {
         return fetch(`http://localhost:8088/comments/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+            "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+            },
         })
-            .then(getComments)
-    }
+            .then(getComments)}
     
     return(
         <CommentContext.Provider value={{
