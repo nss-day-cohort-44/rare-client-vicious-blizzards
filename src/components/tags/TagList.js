@@ -20,5 +20,5 @@ return (
     {
         tags.map(tagObj =>  <Tag key={tagObj.id} tag={tagObj} props={props}/> )
     }
-    </div> 
+    </div > 
 )}
