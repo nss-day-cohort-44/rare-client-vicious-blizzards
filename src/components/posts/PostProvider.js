@@ -5,7 +5,7 @@ export const PostContext = React.createContext()
 
 export const PostProvider = (props) => {
   const [posts, setPosts] = useState([])
-  const [post, setPost] = useState({ category: {} })
+  const [post, setPost] = useState({ category: {}, user: {user: {}}, tags: {} })
   const [postId, setPostId] = useState(0)
   const { addPostTag } = useContext(PostTagContext)
 
@@ -62,7 +62,7 @@ export const PostProvider = (props) => {
   }
 
   const deletePost = (id) => {
-    return fetch(`http://localhost:8088/posts/${id}`, {
+    return fetch(`http://localhost:8000/posts/${id}`, {
       method: "DELETE",
     }).then(getPosts)
   }
