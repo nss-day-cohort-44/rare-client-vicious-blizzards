@@ -22,11 +22,12 @@ export const PostDetail = (props) => {
         }
     }
 
+    console.log("post", post)
     return (
         <section className="post__detail">
             <div className="post--title">{post.title}</div>
             <div className="post--buttons">
-            { parseInt(localStorage.getItem("rare_user_id")) === post.user_id ? <>
+            { post.is_current_user ? <>
                 <button onClick={() => { confirmDelete() }}>Delete Post</button> 
                 <button onClick={() => { props.history.push(`/posts/edit/${post.id}`) }}>
                 Edit Post</button> </> : <> {""}</>
@@ -34,7 +35,7 @@ export const PostDetail = (props) => {
             </div>
             <div className="post--category">{post.category.label}</div>
             <div><img className="post--image" src={post.post_image_url}></img></div>
-            {/* <div>By {post.user.user.username}</div> */}
+            <div>By {post.user.user.username}</div>
             <div>{post.publication_date}</div>
             <div><button onClick={() => { props.history.push(`/comments/${post.id}`) }}>
                 View Comments</button></div>
