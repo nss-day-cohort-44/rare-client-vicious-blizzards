@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CommentContext } from "./CommentProvider"
 
-export const Comment = ({ comment, props }) => {
+export const Comment = ({ comment, props, relatedComments}) => {
 
     const { deleteComment } = useContext(CommentContext)
     const postId = parseInt(comment.post_id)
@@ -20,7 +20,7 @@ export const Comment = ({ comment, props }) => {
             <div>
                 <div>Comment content: {comment.content}</div>
                 <div>Relevant post id: {comment.post_id}</div>
-                <div>Author: {comment.username}</div>
+                <div>Author: {comment.author.user.first_name}</div>
                 <div>Date Created on: {date.toLocaleString("en-US", {
                     year: "numeric",
                     month: "numeric",

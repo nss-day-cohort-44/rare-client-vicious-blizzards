@@ -37,10 +37,11 @@ export const PostDetail = (props) => {
         <>
             <div>{post.title}</div>
             <div>{post.publication_date}</div>
-            <div>{post.image_url}</div>
+            <div>{post.post_image_url}</div>
             <div>{post.content}</div>
-            <div>{post.category.label}</div>
+            {/* <div>{post.category.label}</div> */}
             <div>{post.username}</div>
+            <div>{post.comment}</div>
             { parseInt(localStorage.getItem("rare_user_id")) === post.user_id ? <>
                 <button onClick={() => { confirmDelete() }}>Delete Post</button> 
                 <button onClick={() => { props.history.push(`/posts/edit/${post.id}`) }}>
