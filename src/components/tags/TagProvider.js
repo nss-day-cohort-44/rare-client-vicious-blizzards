@@ -23,7 +23,6 @@ export const TagProvider = (props) => {
     }
     })
         .then(res => res.json())
-        .then(setTags)
     }
 
 	const addTag = (tag) => {
