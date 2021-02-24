@@ -23,15 +23,17 @@ export const PostDetail = (props) => {
     }
 
     return (
-        <>
-            <div>{post.title}</div>
-            <div>{post.category.label}</div>
+        <section className="post__detail">
+            <div className="post--title">{post.title}</div>
+            <div className="post--buttons">
             { parseInt(localStorage.getItem("rare_user_id")) === post.user_id ? <>
                 <button onClick={() => { confirmDelete() }}>Delete Post</button> 
                 <button onClick={() => { props.history.push(`/posts/edit/${post.id}`) }}>
                 Edit Post</button> </> : <> {""}</>
             }
-            <div><img src={post.post_image_url}></img></div>
+            </div>
+            <div className="post--category">{post.category.label}</div>
+            <div><img className="post--image" src={post.post_image_url}></img></div>
             {/* <div>By {post.user.user.username}</div> */}
             <div>{post.publication_date}</div>
             <div><button onClick={() => { props.history.push(`/comments/${post.id}`) }}>
@@ -45,6 +47,6 @@ export const PostDetail = (props) => {
                 pathname: `/posts/addcomment`,
                 state: { chosenPost: post }
             }}>Add a Comment</Link> */}
-        </>
+        </section>
     )
 }
