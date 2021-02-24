@@ -37,7 +37,7 @@ export const PostDetail = (props) => {
         <>
             <div>{post.title}</div>
             <div>{post.publication_date}</div>
-            <div>{post.image_url}</div>
+            <div><img src={post.post_image_url}></img></div>
             <div>{post.content}</div>
             <div>{post.category.label}</div>
             <div>{post.username}</div>
