@@ -39,21 +39,21 @@ export const PostDetail = (props) => {
             <div>{post.publication_date}</div>
             <div>{post.image_url}</div>
             <div>{post.content}</div>
-            <div>{post.category.label}</div>
+            {/* <div>{post.category.label}</div> */}
             <div>{post.username}</div>
             { parseInt(localStorage.getItem("rare_user_id")) === post.user_id ? <>
                 <button onClick={() => { confirmDelete() }}>Delete Post</button> 
                 <button onClick={() => { props.history.push(`/posts/edit/${post.id}`) }}>
                 Edit Post</button> </> : <> {""}</>
             }
-            <h3>Comments</h3>
+            <h3>All comments</h3>
             {
                 relatedComments.map(commentObj => <Comment key={commentObj.id} comment={commentObj} props={props} />)
             }
-            <Link to={{
-                pathname: `/posts/addcomment`,
-                state: { chosenPost: post }
-            }}>Add a Comment</Link>
+                
+            <button onClick={() => { props.history.push(`/posts/${postId}`) 
+                // state: { chosenPost: post }
+            }}>  View Comments </button>
         </>
     )
 }
