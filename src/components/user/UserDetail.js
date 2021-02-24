@@ -2,36 +2,52 @@ import React, { useContext, useEffect, useState } from "react"
 import { UserContext } from "./UserProvider"
 
 export const UserDetail = (props) => {
-  const { getSingleUser } = useContext(UserContext)
+  const { getSingleUser,getAllUsers } = useContext(UserContext)
   const userId = parseInt(props.match.params.id)
-  const [user, setUser] = useState({})
-  const date = new Date(user.created_on)
-  let active = ""
-  if (user.active === 1) {
-    active = "Active"
-  } else {
-    active = "Disactve"
-  }
+  //initial state of user is an object with user property
+  const [user,setUser] = useState({user:{}})
+  const[active,setActive] = useState('')
+  const[isStaff,setisStaff] = useState('')
+  
 
   useEffect(() => {
-    getSingleUser(userId).then(setUser)
+    getSingleUser(userId)
+    .then(setUser)
+    const date = new Date(user.created_on)
   }, [])
   console.log(props.match.params.id)
+
+  useEffect(() => {
+  if (user.user.active === 1) {
+    setActive("active")
+    } else {
+    setActive("Disactive")
+  }},[user])
+  console.log(user)
+
+  useEffect(() => {
+    if (user.user.is_staff === 1) {
+      setisStaff("Admin")
+      } else {
+      setisStaff("Author")
+    }},[user])
+
+
   return (
     <>
       <h3>
-        Name: {user.first_name} {user.last_name}
+        Name: {user.user.first_name} {user.user.last_name}
       </h3>
-      <img src={user.profile_image_url} alt={user.first_name} width="100" />
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-      <p>Password: {user.password}</p>
-      <p>Account Type: {!user.account_type ? "" : user.account_type.label}</p>
+      <img src={user.profile_image} alt={user.user.first_name} width="100" />
+      <p>Username: {user.user.username}</p>
+      <p>Email: {user.user.email}</p>
+      <p>Password: {user.user.password}</p>
+      <p>Account Type: {isStaff}</p>
       <p>Bio: {user.bio}</p>
       <p>Activity Status: {active}</p>
       <p>
         Account Created On:{" "}
-        {date.toLocaleString("en-US", {
+        {new Date(user.created_on).toLocaleString("en-US", {
           year: "numeric",
           month: "numeric",
           day: "numeric",

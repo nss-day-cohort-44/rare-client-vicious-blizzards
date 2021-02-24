@@ -85,7 +85,8 @@ export const ApplicationViews = () => {
                       path="/tags/edit/:id(\d+)"
                       render={(props) => <TagForm {...props} />}
                     />
-                    <Route exact path="/users" render={(props) => <UserList {...props} />} />
+                    <Route exact path="/users" 
+                    render={(props) => <UserList {...props} />} />
                     <Route
                       exact
                       path="/users/:id(\d+)"
