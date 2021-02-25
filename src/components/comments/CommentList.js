@@ -12,7 +12,7 @@ export const CommentList = (props) => {
 
 return (     
     <div> 
-    <h3>This is a complete list of Comments</h3>
+    <h3>This will be a list of a Post's Comments</h3>
     {
         comments.map(commentObj => <Comment key={commentObj.id} comment={commentObj} props={props}/> )
     }
