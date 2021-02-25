@@ -8,17 +8,12 @@ import { Link } from "react-router-dom"
 
 export const PostDetail = (props) => {
     const { getSinglePost, post, setPost, deletePost } = useContext(PostContext)
-    const { comments, relatedComments, getCommentsByPostId } = useContext(CommentContext)
 
     // console.log(props)
     const postId = parseInt(props.match.params.postId)
     useEffect(() => {
-        // const postId = parseInt(props.match.params.postId)
         getSinglePost(postId)
-        getCommentsByPostId(postId)
-            .then(setPost(post))
     }, [])
-
 
     const confirmDelete = () => {
         const d = window.confirm("Would you like to delete this?")
@@ -27,33 +22,32 @@ export const PostDetail = (props) => {
         }
     }
 
-    useEffect(() => {
-        const postId = parseInt(props.match.params.postId)
-        getCommentsByPostId(postId)
-    }, [comments])
-
-    // console.log(post)
+    console.log("post", post)
     return (
-        <>
-            <div>{post.title}</div>
-            <div>{post.publication_date}</div>
-            <div>{post.image_url}</div>
-            <div>{post.content}</div>
-            {/* <div>{post.category.label}</div> */}
-            <div>{post.username}</div>
-            { parseInt(localStorage.getItem("rare_user_id")) === post.user_id ? <>
+        <section className="post__detail">
+            <div className="post--title">{post.title}</div>
+            <div className="post--buttons">
+            { post.is_current_user ? <>
                 <button onClick={() => { confirmDelete() }}>Delete Post</button> 
                 <button onClick={() => { props.history.push(`/posts/edit/${post.id}`) }}>
                 Edit Post</button> </> : <> {""}</>
             }
-            <h3>All comments</h3>
+            </div>
+            <div className="post--category">{post.category.label}</div>
+            <div><img className="post--image" src={post.post_image_url}></img></div>
+            <div>By {post.user.user.username}</div>
+            <div>{post.publication_date}</div>
+            <div><button onClick={() => { props.history.push(`/comments/${post.id}`) }}>
+                View Comments</button></div>
+            <div>{post.content}</div>
+            {/* <h3>Comments</h3>
             {
-                relatedComments.map(commentObj => <Comment key={commentObj.id} comment={commentObj} props={props} />)
+                post.comments.map(commentObj => <Comment key={commentObj.id} comment={commentObj} props={props} />)
             }
-                
-            <button onClick={() => { props.history.push(`/posts/${postId}`) 
-                // state: { chosenPost: post }
-            }}>  View Comments </button>
-        </>
+            <Link to={{
+                pathname: `/posts/addcomment`,
+                state: { chosenPost: post }
+            }}>Add a Comment</Link> */}
+        </section>
     )
 }
