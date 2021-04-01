@@ -51,10 +51,13 @@ Below is the planning document we created before implementing this project. This
 
 ![RareServerERD.png](RareServerERD.png)
  
-## **Authors**
-Kyle Simmons
-Alan Andrusky
-Danny McCracken
-Benjamin Schweizer
-Silas Lowe
+## **Contributors**
+[Alan Andrusky](https://github.com/aandrusky)  
+[Charlie Butterworth](https://github.com/CharlieButterworth)  
+[Suganya](https://github.com/Suganya-dev)  
+[Silas Lowe](https://github.com/silaslowe)
+[Danny McCracken](https://github.com/dmccracken13)
+[Ben Schweiz](https://github.com/bschweiz) 
+[Kyle Simmons](https://github.com/KyleSimmonsC44)
+[Kristen Steele](https://github.com/krsteele) 
 
